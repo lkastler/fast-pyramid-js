@@ -1,13 +1,28 @@
 <html>
 <body>
 <script type="text/javascript">
-logPyramid = function(levels) {
-    for (let i = 0; i < levels; ++i) {
-        console.log('test');
+let fn = function(levels) {
+    if (levels <= 0) {
+        return;
     }
+    s = '.'.repeat(levels - 1) + '#';
+    let out = ''
+    
+    for (let i = 1; i <= levels; ++i) {
+        out += s + '\n';
+        s = s.substr(1) + '##';
+    }
+
+    console.log(out);
 };
 
-logPyramid(1000);
+let levels = 1000;
+
+let t0 = performance.now();
+fn(levels);
+let t1 = performance.now();
+
+console.log((t1 - t0) + " milliseconds.");
 </script>
 </body>
 </html>
