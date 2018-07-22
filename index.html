@@ -1,25 +1,24 @@
 <html>
 <body>
 <script type="text/javascript">
-let printPyramid = function(levels) {
+let printPyramid = function() {
     if (levels <= 0) {
         return;
     }
-    let s = '\u0020'.repeat(levels - 1) + '#';
-    let out = ''
-    
-    for (let i = 1; i <= levels; ++i) {
-        out += s + '\n';
+    let s = new String('\u0020'.repeat(levels - 1) + '#');
+    let out = [];
+    let i = levels;
+    while (--i) {
+        out.push(s);
         s = s.substr(1) + '##';
     }
-
-    console.log(out);
+    console.log(out.join('\n'));
 };
 
 let levels = 1000;
 
 let t0 = performance.now();
-printPyramid(levels);
+printPyramid();
 let t1 = performance.now();
 
 console.log((t1 - t0) + "ms");
